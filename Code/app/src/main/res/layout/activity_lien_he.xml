@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F8EE9A"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LienHeActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarlienhe"
+        android:background="#FF9800"
+        app:titleTextColor="#FFFFFF"
+        app:title="THÔNG TIN LIÊN HỆ"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/border"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:drawableLeft="@drawable/people"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Admin:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/border"
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <Button
+            android:background="#f9f9f9"
+            android:id="@+id/buttoncall"
+            android:layout_marginLeft="5dp"
+            android:drawableLeft="@drawable/cellphone"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="SĐT:"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/border"
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <Button
+            android:background="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:drawableLeft="@drawable/message"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:id="@+id/buttonemail"
+            android:textAllCaps="false"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Email:"
+            android:layout_width="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>
