@@ -209,7 +209,7 @@ public class GioHang extends AppCompatActivity {
             tongtien+=MainActivity.manggiohang.get(i).getGiasp();
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        txttongtien.setText("Gía : "+decimalFormat.format(tongtien)+" đ");
+        txttongtien.setText("Giá : "+decimalFormat.format(tongtien)+" Đ");
     }
 
     private void CheckData() {

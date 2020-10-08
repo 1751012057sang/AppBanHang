@@ -99,7 +99,7 @@ public class GioHangAdapter extends BaseAdapter {
                 long giamoinhat=(giaht*slmoinhat)/slht;
                 MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
                 DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-                ViewHolder.txtgiagiohang.setText("Gía : "+decimalFormat.format(giamoinhat)+" đ");
+                ViewHolder.txtgiagiohang.setText("Giá : "+decimalFormat.format(giamoinhat)+" Đ");
                 GioHang.EventUtil();
                 if(slmoinhat>9){
                     ViewHolder.bttvalues.setText(String.valueOf(slmoinhat));
@@ -122,7 +122,7 @@ public class GioHangAdapter extends BaseAdapter {
                 long giamoinhat=(giaht*slmoinhat)/slht;
                 MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
                 DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-                ViewHolder.txtgiagiohang.setText("Giá : "+decimalFormat.format(giamoinhat)+" đ");
+                ViewHolder.txtgiagiohang.setText("Giá : "+decimalFormat.format(giamoinhat)+" Đ");
                 GioHang.EventUtil();
                 if(slmoinhat<2){
                     ViewHolder.bttvalues.setText(String.valueOf(slmoinhat));

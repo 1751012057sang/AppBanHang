@@ -31,7 +31,7 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dong_moinhay,null);
+        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dong_moinhat,null);
         ItemHolder itemHolder=new ItemHolder(v);
         return itemHolder;
     }

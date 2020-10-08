@@ -14,7 +14,8 @@
         android:textColor="#FFC107"
         android:text="XÁC NHẬN ĐIẠ CHỈ ĐẶT HÀNG"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"

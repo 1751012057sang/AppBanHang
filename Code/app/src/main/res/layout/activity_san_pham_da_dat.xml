@@ -16,7 +16,7 @@
             android:id="@+id/toolbarsanphamdadat"
             android:background="#FF9800"
             app:titleTextColor="#FFFFFF"
-            app:title="DANH SÁCH MÓN ĂN ĐÃ ĐẶT"
+            app:title="SẢN PHẨM BẠN ĐÃ ĐẶT HÀNG"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
         </androidx.appcompat.widget.Toolbar>
@@ -28,13 +28,13 @@
             android:textSize="30sp"
             android:id="@+id/sanphamdadattrong"
             android:layout_gravity="center"
-            android:text="Bạn Chưa Có Đặt Hàng"
+            android:text="Bạn chưa đặt hàng!"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ListView
             android:id="@+id/listviewsanphamdadat"
             android:layout_width="match_parent"
-            android:layout_height="450dp">
+            android:layout_height="wrap_content">
 
         </ListView>
         </FrameLayout>

@@ -18,13 +18,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBt_AxXi92T945XtMtmdmlvweV_kLQOdes" />
 
-        <activity android:name=".activity.DangNhapActivity">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.DangNhapActivity"/>
         <activity android:name=".activity.DienThoaiActivity" />
         <activity android:name=".activity.MainActivity" >
 

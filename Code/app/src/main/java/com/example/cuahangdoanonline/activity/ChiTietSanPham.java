@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,7 +40,7 @@ public class ChiTietSanPham extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiec_san_pham);
+        setContentView(R.layout.activity_chi_tiet_san_pham);
         Anhxa();
         Actiontoolbar();
         Getdata();
@@ -102,7 +101,7 @@ public class ChiTietSanPham extends AppCompatActivity {
         txtten.setText(sanpham.getTensanpham());
         txtnmota.setText(sanpham.getMotasanpham());
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        txtgia.setText("Gía "+decimalFormat.format(gia)+" đ");
+        txtgia.setText("Giá "+decimalFormat.format(gia)+" Đ");
         Picasso.with(getApplicationContext()).load(sanpham.getHinhanhsanpham())
                 .placeholder(R.drawable.imageico)
                 .error(R.drawable.error)
