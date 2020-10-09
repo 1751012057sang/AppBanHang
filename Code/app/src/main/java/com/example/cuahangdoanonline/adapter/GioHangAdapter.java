@@ -73,7 +73,7 @@ public class GioHangAdapter extends BaseAdapter {
         viewHolder.txtgiagiohang.setText("Gía : "+decimalFormat.format(gioHang.giasp)+" đ");
         Picasso.with(context)
                 .load(gioHang.getHinhanhsp())
-                .placeholder(R.drawable.imageico)
+                .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
                 .into(viewHolder.imggiohang);
         viewHolder.bttvalues.setText(gioHang.getSoluongsp()+"");

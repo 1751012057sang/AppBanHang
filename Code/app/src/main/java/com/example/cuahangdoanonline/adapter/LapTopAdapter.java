@@ -70,7 +70,7 @@ public class LapTopAdapter extends BaseAdapter {
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         viewHolder.txtgialaptop.setText("Giá: "+decimalFormat.format(sanpham.getGiasanpham())+" Đ");
         Picasso.with(context).load(sanpham.getHinhanhsanpham())
-                .placeholder(R.drawable.imageico)
+                .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
                 .into(viewHolder.imghinhlaptop);
         viewHolder.txtmotalaptop.setMaxLines(2);

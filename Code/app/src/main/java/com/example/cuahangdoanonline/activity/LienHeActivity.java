@@ -70,7 +70,7 @@ public class LienHeActivity extends AppCompatActivity {
                     Intent intent = new Intent(Intent.ACTION_SENDTO);
                     intent.setType("message/rfc822");
                     intent.putExtra(Intent.EXTRA_EMAIL, response);
-                    intent.setData(Uri.parse("mailto:"+"trananhphuoc0603@gmail.com"));
+                    intent.setData(Uri.parse("mailto:"+"nguyenthanhsang131199@gmail.com"));
                     intent.putExtra(Intent.EXTRA_SUBJECT, "");
                     intent.putExtra(Intent.EXTRA_TEXT, "");
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -115,7 +115,7 @@ public class LienHeActivity extends AppCompatActivity {
     }
     public void call_action(){
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:0943597722" ));
+        callIntent.setData(Uri.parse("tel:0886967808" ));
         startActivity(callIntent);
     }
     public  boolean isPermissionGranted() {

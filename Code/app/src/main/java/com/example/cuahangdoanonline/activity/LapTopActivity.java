@@ -86,14 +86,14 @@ public class LapTopActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menugiohang :
-                Intent intent=new Intent(getApplicationContext(),GioHang.class);
-                startActivity(intent);
-            case R.id.menusearchdollar :
-                DialogTheoGia();
-                break;
+            public boolean onOptionsItemSelected(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menugiohang :
+                        Intent intent=new Intent(getApplicationContext(),GioHang.class);
+                        startActivity(intent);
+                    case R.id.menusearchdollar :
+                        DialogTheoGia();
+                        break;
 
         }
         return super.onOptionsItemSelected(item);

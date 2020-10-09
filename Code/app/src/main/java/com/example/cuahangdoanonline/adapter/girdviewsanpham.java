@@ -64,7 +64,7 @@ public class girdviewsanpham extends BaseAdapter {
         ViewHorder.txttensp.setText(sanpham.getTensanpham());
         ViewHorder.txtgiasp.setText("Giá : "+decimalFormat.format(sanpham.getGiasanpham())+" Đ");
         Picasso.with(context).load(sanpham.getHinhanhsanpham())
-                .placeholder(R.drawable.imageico)
+                .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
                 .into(ViewHorder.imgsp);
         return view;

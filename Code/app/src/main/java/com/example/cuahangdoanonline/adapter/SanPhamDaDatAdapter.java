@@ -65,7 +65,7 @@ public class SanPhamDaDatAdapter extends BaseAdapter {
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         viewHolder.txtgiadd.setText("Giá: "+decimalFormat.format(sanPhamDaDat.getGiasp())+" Đ");
         Picasso.with(context).load(sanPhamDaDat.getHinhanh())
-                .placeholder(R.drawable.imageico)
+                .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
                 .into(viewHolder.imghinhdd);
         viewHolder.txtsldd.setText("Số Lượng: "+sanPhamDaDat.getSl()+"");
