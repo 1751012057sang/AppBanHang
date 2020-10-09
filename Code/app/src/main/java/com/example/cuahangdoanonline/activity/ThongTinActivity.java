@@ -1,8 +1,13 @@
 package com.example.cuahangdoanonline.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import android.view.View;
 
 
@@ -11,6 +16,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -27,7 +34,7 @@ public class ThongTinActivity extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        toolbar=(Toolbar)findViewById(R.id.toolbargooglemap);
+        toolbar = (Toolbar) findViewById(R.id.toolbargooglemap);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -51,12 +58,11 @@ public class ThongTinActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(9.228228, 105.420334);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("PShop cửa hàng thiết bị di động").snippet("342 đường 30/4 Hộ Phòng Gía Rai Bạc Liêu"));
+        LatLng DHMo = new LatLng(10.817127, 106.677183);
+        mMap.addMarker(new MarkerOptions().position(DHMo).title("SH_Shop cửa hàng thiết bị di động").snippet("371 Nguyễn Kiệm, Gò Vấp, TP.HCM").icon(BitmapDescriptorFactory.defaultMarker()));
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(15).build();
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(DHMo).zoom(15).build();
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }

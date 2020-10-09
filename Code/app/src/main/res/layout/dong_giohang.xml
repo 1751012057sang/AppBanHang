@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
-                    android:background="@drawable/border_minus"
+                    android:background="@drawable/custom_login"
                     android:focusable="false"
                     android:textColor="#FF9800"
                     android:textStyle="bold"
@@ -64,7 +64,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp" />
                 <Button
-                    android:background="@drawable/border_plus"
+                    android:background="@drawable/custom_login"
                     android:layout_marginLeft="10dp"
                     android:focusable="false"
                     android:textColor="#FF9800"

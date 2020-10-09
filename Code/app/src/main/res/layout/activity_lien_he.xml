@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#F8EE9A"
+    android:background="@drawable/bgnv"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,9 +8,9 @@
     android:layout_height="match_parent"
     tools:context=".activity.LienHeActivity">
     <androidx.appcompat.widget.Toolbar
+        android:background="@drawable/bgslp"
         android:id="@+id/toolbarlienhe"
-        android:background="#FF9800"
-        app:titleTextColor="#FFFFFF"
+        app:titleTextColor="#FF9800"
         app:title="THÔNG TIN LIÊN HỆ"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
@@ -25,12 +25,12 @@
         <TextView
             android:layout_marginLeft="5dp"
             android:drawableLeft="@drawable/people"
-            android:textColor="#FF9800"
+            android:textColor="#FFC107"
             android:textStyle="bold"
-            android:textSize="22sp"
+            android:textSize="17dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:text="Admin:"
+            android:text="Admin: Thanh Sang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -46,12 +46,12 @@
             android:id="@+id/buttoncall"
             android:layout_marginLeft="5dp"
             android:drawableLeft="@drawable/cellphone"
-            android:textColor="#FF9800"
+            android:textColor="#FFC107"
             android:textStyle="bold"
-            android:textSize="22sp"
+            android:textSize="17dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:text="SĐT:"
+            android:text="SĐT: 0886967808"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -62,19 +62,19 @@
         android:background="@drawable/border"
         android:layout_marginTop="80dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="100dp">
         <Button
             android:background="#ffffff"
             android:layout_marginLeft="5dp"
             android:drawableLeft="@drawable/message"
-            android:textColor="#FF9800"
+            android:textColor="#FFC107"
             android:textStyle="bold"
             android:id="@+id/buttonemail"
             android:textAllCaps="false"
-            android:textSize="22sp"
+            android:textSize="16dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:text="Email:"
+            android:text="Email: nguyenthanhsang131199@gmail.com"
             android:layout_width="match_parent"
             android:layout_marginRight="10dp"
             android:layout_height="wrap_content" />

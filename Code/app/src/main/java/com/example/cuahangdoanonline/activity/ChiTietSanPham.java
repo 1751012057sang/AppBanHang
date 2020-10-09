@@ -32,8 +32,8 @@ public class ChiTietSanPham extends AppCompatActivity {
     private Button bttthem;
     private Spinner spinner;
     public int id=0;
-    public String TenChiTiec="";
-    public int GiaChitiec=0;
+    public String TenChiTiet="";
+    public int GiaChitiet=0;
     public String hinhanhchitiec="";
     public String MoTachitiec="";
     public int idsanpham=0;
@@ -62,19 +62,19 @@ public class ChiTietSanPham extends AppCompatActivity {
                             if(MainActivity.manggiohang.get(i).getSoluongsp()>10){
                                 MainActivity.manggiohang.get(i).setSoluongsp(10);
                             }
-                            MainActivity.manggiohang.get(i).setGiasp(GiaChitiec*MainActivity.manggiohang.get(i).getSoluongsp());
+                            MainActivity.manggiohang.get(i).setGiasp(GiaChitiet*MainActivity.manggiohang.get(i).getSoluongsp());
                             exits=true;
                         }
                     }
                     if(exits==false){
                         int soluong=Integer.parseInt(spinner.getSelectedItem().toString());
-                        long giamoi1=soluong*GiaChitiec;
-                        MainActivity.manggiohang.add(new Giohang(id,TenChiTiec,giamoi1,hinhanhchitiec,soluong));
+                        long giamoi1=soluong*GiaChitiet;
+                        MainActivity.manggiohang.add(new Giohang(id,TenChiTiet,giamoi1,hinhanhchitiec,soluong));
                     }
                 }else{
                     int soluong=Integer.parseInt(spinner.getSelectedItem().toString());
-                    long giamoi=soluong*GiaChitiec;
-                    MainActivity.manggiohang.add(new Giohang(id,TenChiTiec,giamoi,hinhanhchitiec,soluong));
+                    long giamoi=soluong*GiaChitiet;
+                    MainActivity.manggiohang.add(new Giohang(id,TenChiTiet,giamoi,hinhanhchitiec,soluong));
                 }
                 Intent intent=new Intent(getApplicationContext(),GioHang.class);
                 startActivity(intent);
@@ -92,8 +92,8 @@ public class ChiTietSanPham extends AppCompatActivity {
     private void Getdata() {
         Sanpham sanpham= (Sanpham) getIntent().getSerializableExtra("thongtinsanpham");
         id=sanpham.getID();
-        TenChiTiec=sanpham.getTensanpham();
-        GiaChitiec=sanpham.getGiasanpham();
+        TenChiTiet=sanpham.getTensanpham();
+        GiaChitiet=sanpham.getGiasanpham();
         hinhanhchitiec=sanpham.getHinhanhsanpham();
         MoTachitiec=sanpham.getMotasanpham();
         idsanpham=sanpham.getIDsanpham();

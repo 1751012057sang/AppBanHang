@@ -48,20 +48,20 @@ public class DangKyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(edtho.length()==0 || edtten.length()==0 || edtemail.length()==0 || edtmatkhau.length()==0|| edtsdt.length()==0 ||edtdc.length()==0 ){
-                    textViewcanhbao.setText(" !!! vui lòng điền đầy đủ thông tin");
+                    textViewcanhbao.setText(" Vui lòng điền đầy đủ thông tin!");
 
                 }
                 else if(edtmatkhau.length()<=6 || edtemail.length()<=6){
                     String t = edtemail.getText().toString();
                     ta = t.substring(t.length() - 10);
-                    textViewcanhbao.setText(" !!! Email hoặc mặt khẩu phải từ 6 ký tự");
+                    textViewcanhbao.setText(" Email hoặc mặt khẩu phải từ 6 ký tự!");
 
                 }else if(edtsdt.length()<=9){
-                    textViewcanhbao.setText(" !!!Số Điên Thoại Không Hợp Lệ");
+                    textViewcanhbao.setText(" Số Điên Thoại Không Hợp Lệ!");
 
                 }
-                else if(ta.equals("@gmail.com")) {
-                    textViewcanhbao.setText(" !!!Email Không hợp lệ");
+                else if(ta.equals("@")) {
+                    textViewcanhbao.setText("Email Không hợp lệ!");
                 }else {
                     themtaikhoan();
                     //  DangNhapActivity.database.QueryData("INSERT INTO TaiKhoan VALUES(NULL,'"+ edtho.getText().toString().trim()+"','"+edtten.getText().toString().trim()+"','"+edtemail.getText().toString().trim()+"','"+edtmatkhau.getText().toString()+"','"+edtsdt.getText().toString().trim()+"','"+gtinh+"',1)");
@@ -77,16 +77,16 @@ public class DangKyActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.trim().equals("success")) {
-                    Toast.makeText(DangKyActivity.this, "Đã Thêm", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DangKyActivity.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(DangKyActivity.this, DangNhapActivity.class));
-                }else if(response.trim().equals("Tài Khoản Đã Tồn Tại")){
+                }else if(response.trim().equals("Tài Khoản Đã Tồn Tại!")){
                     Toast.makeText(DangKyActivity.this,response,Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DangKyActivity.this,"Lỗi Xảy Ra",Toast.LENGTH_LONG).show();
+                Toast.makeText(DangKyActivity.this,"Lỗi Xảy Ra!",Toast.LENGTH_LONG).show();
             }
         }){
             @Override

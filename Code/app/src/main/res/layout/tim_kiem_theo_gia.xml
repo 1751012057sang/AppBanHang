@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:gravity="center"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="280dp">
     <RadioGroup
         android:gravity="left"
@@ -16,7 +16,7 @@
             android:textStyle="bold"
             android:textColor="@color/orrange"
             android:textSize="30dp"
-            android:text="Dưới 2tr"
+            android:text="Dưới 2 triệu"
             android:id="@+id/radiobuttonduoi2tr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -26,7 +26,7 @@
             android:textColor="@color/orrange"
             android:textStyle="bold"
             android:textSize="30dp"
-            android:text="2tr - 5tr"
+            android:text="2 triệu -> 5 triệu"
             android:id="@+id/radiobuttonduoi2tr5tr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -35,7 +35,7 @@
             android:textColor="@color/orrange"
             android:textStyle="bold"
             android:textSize="30dp"
-            android:text="5tr-10tr"
+            android:text="5 triệu -> 10 triệu"
             android:id="@+id/radiobuttonduoi5tr10tr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -44,7 +44,7 @@
             android:textColor="@color/orrange"
             android:textStyle="bold"
             android:textSize="30dp"
-            android:text="Trên 10tr"
+            android:text="Trên 10 triệu"
             android:id="@+id/radiobuttontren10tr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

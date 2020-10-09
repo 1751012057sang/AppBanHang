@@ -73,7 +73,7 @@ public class SanPhamDaDat extends AppCompatActivity {
                                tongtien+= object.getInt("tientungsanpham");
                                 sanPhamDaDatAdapter.notifyDataSetChanged();
                        }
-                        txtvtongtien.setText(decimalFormat.format(tongtien)+" đ");
+                        txtvtongtien.setText(decimalFormat.format(tongtien)+" Đ");
                    } catch (JSONException e) {
                        e.printStackTrace();
                    }

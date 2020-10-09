@@ -58,7 +58,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private TextView tv_Tentk;
+    private TextView tv_Tentk, tv_Sdt;
     private ImageButton imgbt_Hinhtk;
     private ViewFlipper viewFlipper;
     private GridView gridView;
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             ActionBar();
             ActionViewFlipper();
             LayTenKH();
+            LaySDTKH();
             GetDuLieuLoaisp();
             //   GetDuLieuSanPhamNew();
             girdview();
@@ -232,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,DangNhapActivity.class);
+                Intent intent=new Intent(MainActivity.this,SplashActivity.class);
                 startActivity(intent);
             }
         });
@@ -246,6 +247,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 tv_Tentk.setText(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private void LaySDTKH(){
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.laysdt, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                tv_Sdt.setText(response);
 
             }
         }, new Response.ErrorListener() {
@@ -286,9 +311,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    mangloaisp.add(3,new Loaisp(0,"Liên hệ","https://cdn.icon-icons.com/icons2/1918/PNG/128/iconfinder-document04-1622832_121950.png"));
-                    mangloaisp.add(4,new Loaisp(0,"Thông tin","https://st2.depositphotos.com/3369547/11386/v/950/depositphotos_113864336-stock-illustration-avatar-man-icon-people-design.jpg"));
-                    mangloaisp.add(5,new Loaisp(0,"Sản phẩm đã đặt","https://cdn.icon-icons.com/icons2/1835/PNG/128/iconfinderwalletpaysaleshop4177573-115989_115926.png"));
+                    mangloaisp.add(3,new Loaisp(0,"Liên hệ","https://cdn.icon-icons.com/icons2/1055/PNG/128/6-phone-cat_icon-icons.com_76682.png"));
+                    mangloaisp.add(4,new Loaisp(0,"Thông tin","https://cdn.icon-icons.com/icons2/1055/PNG/128/3-search-cat_icon-icons.com_76679.png"));
+                    mangloaisp.add(5,new Loaisp(0,"Sản phẩm đã đặt","https://cdn.icon-icons.com/icons2/1055/PNG/128/17-cart-cat_icon-icons.com_76693.png"));
                     loaispAdapter.notifyDataSetChanged();
 
                 }
@@ -355,6 +380,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Anhxa(){
+        tv_Sdt = (TextView)findViewById(R.id.tv_sdt);
+        tv_Sdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DangXuat();
+            }
+        });
         imgbt_Hinhtk = (ImageButton)findViewById(R.id.imgbtn_hinhtk);
         imgbt_Hinhtk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -363,6 +395,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         tv_Tentk = (TextView)findViewById(R.id.tv_tentk);
+        tv_Tentk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DangXuat();
+            }
+        });
         toolbar=(Toolbar)findViewById(R.id.toobarmanhinhchinh);
         viewFlipper=(ViewFlipper)findViewById(R.id.viewlipper);
         //  recyclerViewmanhinhchinh=(RecyclerView)findViewById(R.id.recyclerView);

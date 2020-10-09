@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".activity.GioHang">
+    tools:context=".activity.GioHang"
+    android:background="@drawable/bgnv">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbargiohang"
-        android:background="#FF9800"
-        app:titleTextColor="#FFFFFF"
+        android:background="@drawable/bgslp"
+        app:titleTextColor="#FF9800"
         app:title="THÔNG TIN GIỎ HÀNG"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
@@ -30,9 +31,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ListView
+                android:dividerHeight="10.0px"
                 android:id="@+id/listviewgiohang"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:verticalSpacing="5dp"
+                android:horizontalSpacing="5dp">
 
             </ListView>
         </FrameLayout>
@@ -53,7 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
             <TextView
-            android:textColor="#FF9800"
+            android:textColor="#FFC107"
             android:textSize="24sp"
             android:text="TỔNG TIỀN:"
             android:layout_width="wrap_content"
@@ -66,7 +70,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/textviewgiatrigiohang"
-                    android:textColor="#FF9800"
+                    android:textColor="#2196F3"
                     android:textSize="24sp"
                     android:text="GIÁ TRỊ"
                     android:layout_width="wrap_content"
@@ -75,10 +79,10 @@
         </LinearLayout>
     </LinearLayout>
     <Button
-        android:background="@drawable/border_thanhtoan"
+        android:background="@drawable/custom_login"
         android:layout_marginTop="2dp"
         android:id="@+id/buttonthanhtoanngiohang"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFC107"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:text="Thanh Toán giỏ hàng"
@@ -86,10 +90,10 @@
         android:layout_width="300dp"
         android:layout_height="0dp" />
     <Button
-        android:background="@drawable/border_thanhtoan"
+        android:background="@drawable/custom_login"
         android:layout_marginTop="7sp"
         android:id="@+id/buttontieptucmuahang"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFC107"
         android:textSize="20sp"
         android:text="Tiếp Tục mua hàng"
         android:layout_weight="1"
