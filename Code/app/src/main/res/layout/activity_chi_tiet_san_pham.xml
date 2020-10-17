@@ -8,7 +8,7 @@
     tools:context=".activity.ChiTietSanPham">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarchitiecsanpham"
-        android:background="@drawable/bgslp"
+        android:background="@color/white"
         app:titleTextColor="#FF9800"
         app:title="THÔNG TIN SẢN PHẨM"
         android:layout_width="match_parent"
@@ -16,14 +16,15 @@
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:gravity="center"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:id="@+id/imageviewanhchitiec"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
+            android:layout_width="140dp"
+            android:layout_height="140dp" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -71,6 +72,8 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_marginLeft="5dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

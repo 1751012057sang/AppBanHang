@@ -8,7 +8,7 @@
     tools:context=".activity.DienThoaiActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbardienthoai"
-        android:background="@drawable/bgslp"
+        android:background="@color/white"
         app:titleTextColor="#FF9800"
         app:title="Điện Thoại"
         android:layout_width="match_parent"

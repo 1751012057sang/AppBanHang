@@ -8,7 +8,7 @@
     tools:context=".activity.LapTopActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarlaptop"
-        android:background="@drawable/bgslp"
+        android:background="@color/white"
         app:titleTextColor="#FF9800"
         app:title="Laptop"
         android:layout_width="match_parent"

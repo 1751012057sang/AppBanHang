@@ -12,9 +12,9 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="219dp"
-            android:background="@drawable/bgdk"></ImageView>
+            android:layout_width="match_parent"
+            android:layout_height="197dp"
+            android:background="@drawable/backgrounddn" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -4,12 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="300dp"
-    android:background="@drawable/bgslp">
+    android:layout_height="380dp"
+    android:background="@drawable/border">
     <TextView
         android:layout_marginTop="20dp"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textAlignment="center"
         android:textColor="#FFC107"
         android:text="XÁC NHẬN ĐIẠ CHỈ ĐẶT HÀNG"
@@ -22,36 +22,68 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:textColor="@color/black"
+            android:id="@+id/edittextdialogtenkh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Tên khách hàng"
+            android:textAllCaps="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:textColor="@color/black"
             android:id="@+id/edittextdialogdiachi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="Địa Chỉ" />
     </com.google.android.material.textfield.TextInputLayout>
-    <LinearLayout
-        android:layout_gravity="center"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <EditText
+            android:textColor="@color/black"
+            android:id="@+id/edittextdialogsdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Số điện thoại" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <Button
-            android:layout_marginLeft="50dp"
-            android:textStyle="bold"
-            android:textColor="#FF9800"
-            android:id="@+id/dialogxacnhan"
-            android:background="@drawable/custom_login"
-            android:text="Xác Nhận"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp" />
-        <Button
-            android:layout_marginLeft="50dp"
-            android:textStyle="bold"
-            android:textColor="#FF9800"
             android:id="@+id/dialogthoat"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:background="@drawable/custom_login"
             android:text="Thoát"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp" />
+            android:textColor="#FF9800"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/dialogxacnhan"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/custom_login"
+            android:text="Xác Nhận"
+            android:textColor="#FF9800"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
