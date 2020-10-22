@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="380dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/border">
     <TextView
         android:layout_marginTop="20dp"
@@ -12,7 +12,7 @@
         android:textSize="20dp"
         android:textAlignment="center"
         android:textColor="#FFC107"
-        android:text="XÁC NHẬN ĐIẠ CHỈ ĐẶT HÀNG"
+        android:text="XÁC NHẬN ĐẶT HÀNG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" />
@@ -56,8 +56,8 @@
             android:layout_marginTop="5dp"
             android:hint="Số điện thoại" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"

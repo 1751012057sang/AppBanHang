@@ -13,12 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout
+        android:layout_margin="10dp"
+        android:background="@color/white"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <ImageView
+        android:layout_margin="10dp"
         android:adjustViewBounds="true"
         android:id="@+id/imageviewdienthoai"
         android:layout_width="100dp"

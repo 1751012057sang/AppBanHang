@@ -29,7 +29,7 @@
             <TextView
                 android:text="Tên Sản Phẩm"
                 android:textSize="17sp"
-                android:textColor="#0a0a0a"
+                android:textColor="#03A9F4"
                 android:gravity="center"
                 android:id="@+id/textviewtensanpham"
                 android:layout_width="wrap_content"
@@ -38,6 +38,7 @@
                 android:text="Gía Sản Phẩm"
                 android:textSize="17sp"
                 android:textColor="#ff00"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/textviewgiasanpham"
                 android:gravity="center"
                 android:layout_width="wrap_content"

@@ -3,8 +3,11 @@ package com.example.cuahangdientuonline.activity;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +55,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     kiemtrataikhoan(); //mở khóa
                 }else{
 
-                    txtvcanhbao.setText("!!! Vui Lòng Điền Đầy Đủ Thông Tin");
+                    txtvcanhbao.setText("Vui lòng điền đầy đủ thông tin!");
                 }
             }
         });
@@ -66,7 +69,7 @@ public class DangNhapActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 if(response.equals("error")) {
-                    txtvcanhbao.setText("Tài Khoản Hoặc Mật Khẩu Không Đúng!!! ");
+                    txtvcanhbao.setText("Tài khoản hoặc mật khẩu của bạn không đúng!");
                 }else{
                     int value=Integer.parseInt(response);
                     id=value;
@@ -82,8 +85,8 @@ public class DangNhapActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params=new HashMap<>();
-                params.put("taikhoan",edtTenDN.getText().toString().trim());
-                params.put("matkhau",edtMK.getText().toString().trim());
+                params.put("Email",edtTenDN.getText().toString().trim());
+                params.put("MatKhau",edtMK.getText().toString().trim());
 
                 return params;
             }

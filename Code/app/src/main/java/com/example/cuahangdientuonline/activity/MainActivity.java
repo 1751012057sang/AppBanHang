@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -57,8 +58,10 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView tv_Tentk, tv_Sdt;
     private ImageButton imgbt_Hinhtk;
+    private Button btTrangDT, btTrangLT;
     private ViewFlipper viewFlipper;
     private GridView gridView;
+    private LinearLayout taiKhoan;
     // private RecyclerView recyclerViewmanhinhchinh;
     private NavigationView navigationView;
     private ListView listViewmanhinhchinh;
@@ -369,20 +372,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Anhxa(){
+        taiKhoan = findViewById(R.id.taikhoan);
+        taiKhoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DangXuat();
+            }
+        });
         tv_Sdt = (TextView)findViewById(R.id.tv_sdt);
-        tv_Sdt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DangXuat();
-            }
-        });
         imgbt_Hinhtk = (ImageButton)findViewById(R.id.imgbtn_hinhtk);
-        imgbt_Hinhtk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DangXuat();
-            }
-        });
         tv_Tentk = (TextView)findViewById(R.id.tv_tentk);
         tv_Tentk.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,7 +18,7 @@ public class Server {
   public static String laydiachi=a+"laydiachi.php";
   public static String laysdt=a+"laysdt.php";
   public static String capnhatdiachi=a+"capnhatdiachi.php";
-  public static String capnhatsdt=a+"capnhatsdt.php";
+  public static String laytongtiendh=a+"laytongtiendh.php";
 
 
 }

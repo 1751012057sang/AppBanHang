@@ -90,7 +90,8 @@ public class GioHang extends AppCompatActivity {
                                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                             CheckConnection.ShowToast_short(getApplicationContext(),"Mời bạn tiếp tục mua sản phẩm");
                                         }else{
-                                            CheckConnection.ShowToast_short(getApplicationContext(),"dữ liệu của bạn đã bị lỗi");
+                                            CheckConnection.ShowToast_short(getApplicationContext(),"Bạn chưa thêm sản phẩm vào giỏ hàng!");
+                                            finish();
                                         }
                                     }
                                 }, new Response.ErrorListener() {
@@ -168,8 +169,8 @@ public class GioHang extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(GioHang.this);
-                builder.setTitle("Xác Nhận xóa sản phẩm");
-                builder.setMessage("Bạn có chắc xóa sản phẩm này ");
+                builder.setTitle("Xác nhận xóa sản phẩm");
+                builder.setMessage("Bạn có chắc xóa sản phẩm này! ");
                 builder.setPositiveButton("có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -249,7 +250,6 @@ public class GioHang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 capnhatdiachi();
-                capnhatsdt();
                 EventThanhToan();
             }
         });
@@ -352,32 +352,6 @@ public class GioHang extends AppCompatActivity {
                 HashMap<String, String> param=new HashMap<String, String>();
                 param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
                 param.put("diachi",edtdc.getText().toString().trim());
-                return param;
-            }
-        };
-        requestQueue.add(stringRequest);
-
-
-
-    }
-    private void capnhatsdt(){
-        final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.capnhatsdt, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param=new HashMap<String, String>();
-                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
-                param.put("SDT",edtsdt.getText().toString().trim());
                 return param;
             }
         };

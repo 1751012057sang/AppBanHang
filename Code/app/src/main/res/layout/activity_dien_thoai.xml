@@ -10,7 +10,7 @@
         android:id="@+id/toolbardienthoai"
         android:background="@color/white"
         app:titleTextColor="#FF9800"
-        app:title="Điện Thoại"
+        app:title="ĐIỆN THOẠI"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>

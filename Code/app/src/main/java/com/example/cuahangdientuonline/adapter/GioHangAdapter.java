@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.cuahangdientuonline.R;
 import com.example.cuahangdientuonline.activity.GioHang;
 import com.example.cuahangdientuonline.activity.MainActivity;
 import com.example.cuahangdientuonline.model.Giohang;
-
-
 import com.squareup.picasso.Picasso;
+
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class GioHangAdapter extends BaseAdapter {
         viewHolder.txtgiagiohang.setText("Gía : "+decimalFormat.format(gioHang.giasp)+" đ");
         Picasso.with(context)
                 .load(gioHang.getHinhanhsp())
-                .placeholder(R.drawable.noimage)
+                .placeholder(R.drawable.imageico)
                 .error(R.drawable.error)
                 .into(viewHolder.imggiohang);
         viewHolder.bttvalues.setText(gioHang.getSoluongsp()+"");
@@ -81,9 +81,12 @@ public class GioHangAdapter extends BaseAdapter {
         if (sl>=10) {
             viewHolder.bttplus.setVisibility(View.INVISIBLE);
 
-        }else if(sl<1){
+        }else if(sl<=1) {
             viewHolder.bttminus.setVisibility(View.INVISIBLE);
 
+        }else if(sl>=1){
+                viewHolder.bttminus.setVisibility(View.VISIBLE);
+                viewHolder.bttplus.setVisibility(View.VISIBLE);
         }else {
             viewHolder.bttminus.setVisibility(View.VISIBLE);
             viewHolder.bttplus.setVisibility(View.VISIBLE);
@@ -92,7 +95,7 @@ public class GioHangAdapter extends BaseAdapter {
         viewHolder.bttplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int slmoinhat= Integer.parseInt(ViewHolder.bttvalues.getText().toString())+1;
+                int slmoinhat=Integer.parseInt(ViewHolder.bttvalues.getText().toString())+1;
                 int slht= MainActivity.manggiohang.get(position).soluongsp;
                 long giaht=MainActivity.manggiohang.get(position).giasp;
                 MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
@@ -115,7 +118,7 @@ public class GioHangAdapter extends BaseAdapter {
         ViewHolder.bttminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int slmoinhat= Integer.parseInt(ViewHolder.bttvalues.getText().toString())-1;
+                int slmoinhat=Integer.parseInt(ViewHolder.bttvalues.getText().toString())-1;
                 int slht=MainActivity.manggiohang.get(position).soluongsp;
                 long giaht=MainActivity.manggiohang.get(position).giasp;
                 MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);

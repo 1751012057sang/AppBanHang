@@ -54,14 +54,14 @@ public class DangKyActivity extends AppCompatActivity {
                 else if(edtmatkhau.length()<=6 || edtemail.length()<=6){
                     String t = edtemail.getText().toString();
                     ta = t.substring(t.length() - 10);
-                    textViewcanhbao.setText(" Email hoặc mặt khẩu phải từ 6 ký tự!");
+                    textViewcanhbao.setText("Email hoặc mật khẩu phải từ 6 ký tự trờ lên!");
 
                 }else if(edtsdt.length()<=9){
-                    textViewcanhbao.setText(" Số Điên Thoại Không Hợp Lệ!");
+                    textViewcanhbao.setText(" Số điện thoại của bạn không hợp lệ!");
 
                 }
                 else if(ta.equals("@")) {
-                    textViewcanhbao.setText("Email Không hợp lệ!");
+                    textViewcanhbao.setText("Email của bạn không hợp lệ!");
                 }else {
                     themtaikhoan();
                     //  DangNhapActivity.database.QueryData("INSERT INTO TaiKhoan VALUES(NULL,'"+ edtho.getText().toString().trim()+"','"+edtten.getText().toString().trim()+"','"+edtemail.getText().toString().trim()+"','"+edtmatkhau.getText().toString()+"','"+edtsdt.getText().toString().trim()+"','"+gtinh+"',1)");
@@ -80,7 +80,8 @@ public class DangKyActivity extends AppCompatActivity {
                     Toast.makeText(DangKyActivity.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(DangKyActivity.this, DangNhapActivity.class));
                 }else if(response.trim().equals("Tài Khoản Đã Tồn Tại!")){
-                    Toast.makeText(DangKyActivity.this,response,Toast.LENGTH_LONG).show();
+                    Toast.makeText(DangKyActivity.this,"Email đã tồn tại!",Toast.LENGTH_LONG).show();
+                    textViewcanhbao.setText("Email đã tồn tại! Vui lòng chọn email khác!");
                 }
             }
         }, new Response.ErrorListener() {
@@ -92,12 +93,12 @@ public class DangKyActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params=new HashMap<>();
-                params.put("ho",edtho.getText().toString().trim());
-                params.put("ten",edtten.getText().toString().trim());
-                params.put("email",edtemail.getText().toString().trim());
-                params.put("matkhau",edtmatkhau.getText().toString().trim());
-                params.put("sdt",edtsdt.getText().toString().trim());
-                params.put("gioitinh",gtinh);
+                params.put("Ho",edtho.getText().toString().trim());
+                params.put("Ten",edtten.getText().toString().trim());
+                params.put("Email",edtemail.getText().toString().trim());
+                params.put("MatKhau",edtmatkhau.getText().toString().trim());
+                params.put("SDT",edtsdt.getText().toString().trim());
+                params.put("GioiTinh",gtinh);
                 params.put("diachi",edtdc.getText().toString().trim());
                 return params;
             }

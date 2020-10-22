@@ -45,27 +45,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/txt_email"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:drawableLeft="@drawable/user"
-                    android:drawablePadding="10dp"
-                    android:hint="Nhập Email Hoặc SĐT Người Dùng"
-                    android:padding="10dp"/>
+                    android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/txt_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:drawableLeft="@drawable/lock"
-                    android:drawablePadding="10dp"
-                    android:hint="Nhập Mật Khẩu Người Dùng"
-                    android:inputType="textPassword"
-                    android:padding="10dp"/>
+                    <EditText
+                        android:padding="10dp"
+                        android:id="@+id/txt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:drawableLeft="@drawable/login"
+                        android:drawablePadding="10dp"
+                        android:hint="Nhập Email Người Dùng " />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etPasswordLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true">
+
+                        <EditText
+                            android:id="@+id/txt_password"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nhập Mật Khẩu Người Dùng"
+                            android:inputType="textPassword"
+                            android:drawablePadding="10dp"
+                            android:drawableStart="@drawable/lock"
+                            tools:ignore="RtlCompat" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
             <Button
@@ -92,7 +106,7 @@
                 android:background="@drawable/custom_login"
                 android:text="ĐĂNG KÝ"
                 android:textColor="@color/orrange"
-                android:textStyle="bold"></Button>
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
