@@ -12,6 +12,7 @@
         android:layout_height="275dp"
         android:background="@drawable/bgsplash"
         android:scaleType="centerCrop"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="500dp"
