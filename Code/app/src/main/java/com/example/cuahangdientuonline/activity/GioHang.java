@@ -164,7 +164,7 @@ public class GioHang extends AppCompatActivity {
 
     }
 
-    private void CatchOnItemListView() {
+    public void CatchOnItemListView() {
         lvgiohang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {

@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.cuahangdientuonline.R;
@@ -17,27 +16,26 @@ import com.example.cuahangdientuonline.activity.MainActivity;
 import com.example.cuahangdientuonline.model.Giohang;
 import com.squareup.picasso.Picasso;
 
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class GioHangAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<Giohang> manggiohang;
+    Context context;
+    ArrayList<Giohang> arraygiohang;
 
-    public GioHangAdapter(Context context, ArrayList<Giohang> manggiohang) {
+    public GioHangAdapter(Context context, ArrayList<Giohang> arraygiohang) {
         this.context = context;
-        this.manggiohang = manggiohang;
+        this.arraygiohang = arraygiohang;
     }
 
     @Override
     public int getCount() {
-        return manggiohang.size();
+        return arraygiohang.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return manggiohang.get(position);
+        return arraygiohang.get(position);
     }
 
     @Override
@@ -45,101 +43,112 @@ public class GioHangAdapter extends BaseAdapter {
         return position;
     }
 
-    public static class  ViewHolder{
-        public static TextView txttengiohang,txtgiagiohang;
+    public class ViewHolder {
+        public TextView tengiohang;
+        public TextView giagiohang;
         public ImageView imggiohang;
-        public static Button bttplus,bttvalues,bttminus;
+        public Button btthemgiohang;
+        public Button btgiamgiohang;
+        public ImageView imageView_trash;
+        private Button giatrigiohang;
     }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder=null;
-        if(viewHolder==null){
-            viewHolder=new ViewHolder();
-            LayoutInflater inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView=inflater.inflate(R.layout.dong_giohang,null);
-            viewHolder.txttengiohang=(TextView)convertView.findViewById(R.id.textviewtengiohang);
-            viewHolder.txtgiagiohang=(TextView)convertView.findViewById(R.id.textviewgiagiohang);
-            viewHolder.imggiohang=(ImageView)convertView.findViewById(R.id.imagivewanhgiohang);
-            viewHolder.bttvalues=(Button)convertView.findViewById(R.id.buttongiohangvalues);
-            viewHolder.bttminus=(Button)convertView.findViewById(R.id.buttongiohangminus);
-            viewHolder.bttplus=(Button)convertView.findViewById(R.id.buttongiohangplus);
+        ViewHolder viewHolder = null;
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.dong_giohang, null);
+            viewHolder.tengiohang = (TextView) convertView.findViewById(R.id.textviewtengiohang);
+            viewHolder.giagiohang = (TextView) convertView.findViewById(R.id.textviewgiagiohang);
+            viewHolder.imggiohang = (ImageView) convertView.findViewById(R.id.imagivewanhgiohang);
+            viewHolder.btthemgiohang = (Button) convertView.findViewById(R.id.buttongiohangplus);
+            viewHolder.btgiamgiohang = (Button) convertView.findViewById(R.id.buttongiohangminus);
+            viewHolder.giatrigiohang = (Button) convertView.findViewById(R.id.buttongiohangvalues);
 
-        }else{
-            viewHolder= (ViewHolder) convertView.getTag();
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        Giohang gioHang= (Giohang) getItem(position);
-        viewHolder.txttengiohang.setText(gioHang.getTensp());
-        DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        viewHolder.txtgiagiohang.setText("Gía : "+decimalFormat.format(gioHang.giasp)+" đ");
-        Picasso.with(context)
-                .load(gioHang.getHinhanhsp())
-                .placeholder(R.drawable.imageico)
+//        Giohang giohang = (Giohang) getItem(position);
+        Giohang giohang = arraygiohang.get(position);
+        viewHolder.tengiohang.setText(giohang.getTensp());
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        viewHolder.giagiohang.setText(decimalFormat.format(giohang.getGiasp()) + "VNĐ");
+        Picasso.with(context).load(giohang.getHinhanhsp())
+                .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.error)
                 .into(viewHolder.imggiohang);
-        viewHolder.bttvalues.setText(gioHang.getSoluongsp()+"");
-        final int sl= Integer.parseInt(viewHolder.bttvalues.getText().toString());
+        viewHolder.giatrigiohang.setText(giohang.getSoluongsp() + "");
+        //button +-
+        int sl = Integer.parseInt(viewHolder.giatrigiohang.getText().toString());
         if (sl>=10) {
-            viewHolder.bttplus.setVisibility(View.INVISIBLE);
+            viewHolder.btthemgiohang.setVisibility(View.INVISIBLE);
 
         }else if(sl<=1) {
-            viewHolder.bttminus.setVisibility(View.INVISIBLE);
+            viewHolder.btgiamgiohang.setVisibility(View.INVISIBLE);
 
         }else if(sl>=1){
-                viewHolder.bttminus.setVisibility(View.VISIBLE);
-                viewHolder.bttplus.setVisibility(View.VISIBLE);
+            viewHolder.btgiamgiohang.setVisibility(View.VISIBLE);
+            viewHolder.btthemgiohang.setVisibility(View.VISIBLE);
         }else {
-            viewHolder.bttminus.setVisibility(View.VISIBLE);
-            viewHolder.bttplus.setVisibility(View.VISIBLE);
+            viewHolder.btgiamgiohang.setVisibility(View.VISIBLE);
+            viewHolder.btthemgiohang.setVisibility(View.VISIBLE);
         }
+        //update giá số lượng
 
-        viewHolder.bttplus.setOnClickListener(new View.OnClickListener() {
+        final ViewHolder finalViewHolder = viewHolder;
+
+        viewHolder.btthemgiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int slmoinhat=Integer.parseInt(ViewHolder.bttvalues.getText().toString())+1;
-                int slht= MainActivity.manggiohang.get(position).soluongsp;
-                long giaht=MainActivity.manggiohang.get(position).giasp;
-                MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
-                long giamoinhat=(giaht*slmoinhat)/slht;
-                MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
-                DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-                ViewHolder.txtgiagiohang.setText("Giá : "+decimalFormat.format(giamoinhat)+" Đ");
+                int slmoi = Integer.parseInt(finalViewHolder.giatrigiohang.getText().toString()) + 1;
+                int slhientai = MainActivity.manggiohang.get(position).getSoluongsp();
+                long giaht = MainActivity.manggiohang.get(position).getGiasp();
+                MainActivity.manggiohang.get(position).setSoluongsp(slmoi);
+                //công thức tính
+                long giamoi = (giaht * slmoi) / slhientai;
+                MainActivity.manggiohang.get(position).setGiasp(giamoi);
+                DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                finalViewHolder.giagiohang.setText(decimalFormat.format(giamoi) + "Đ");
                 GioHang.EventUtil();
-                if(slmoinhat>9){
-                    ViewHolder.bttvalues.setText(String.valueOf(slmoinhat));
-                    ViewHolder.bttminus.setVisibility(View.VISIBLE);
-                    ViewHolder.bttplus.setVisibility(View.INVISIBLE);
-                }else{
-                    ViewHolder.bttvalues.setText(String.valueOf(slmoinhat));
-                    ViewHolder.bttminus.setVisibility(View.VISIBLE);
-                    ViewHolder.bttplus.setVisibility(View.VISIBLE);
+                if (slmoi > 9) {
+                    finalViewHolder.btthemgiohang.setVisibility(View.INVISIBLE);
+                    finalViewHolder.btgiamgiohang.setVisibility(View.VISIBLE);
+                    finalViewHolder.giatrigiohang.setText(String.valueOf(slmoi));
+                } else {
+                    finalViewHolder.btgiamgiohang.setVisibility(View.VISIBLE);
+                    finalViewHolder.btthemgiohang.setVisibility(View.VISIBLE);
+                    finalViewHolder.giatrigiohang.setText(String.valueOf(slmoi));
                 }
             }
         });
-        ViewHolder.bttminus.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btgiamgiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int slmoinhat=Integer.parseInt(ViewHolder.bttvalues.getText().toString())-1;
-                int slht=MainActivity.manggiohang.get(position).soluongsp;
-                long giaht=MainActivity.manggiohang.get(position).giasp;
-                MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
-                long giamoinhat=(giaht*slmoinhat)/slht;
-                MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
-                DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-                ViewHolder.txtgiagiohang.setText("Giá : "+decimalFormat.format(giamoinhat)+" Đ");
+                int slmoi = Integer.parseInt(finalViewHolder.giatrigiohang.getText().toString()) - 1;
+                int slhientai = MainActivity.manggiohang.get(position).getSoluongsp();
+                long giaht = MainActivity.manggiohang.get(position).getGiasp();
+                MainActivity.manggiohang.get(position).setSoluongsp(slmoi);
+                //công thức tính
+                long giamoi = (giaht * slmoi) / slhientai;
+
+                MainActivity.manggiohang.get(position).setGiasp(giamoi);
+                DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                finalViewHolder.giagiohang.setText(decimalFormat.format(giamoi) + "Đ");
                 GioHang.EventUtil();
-                if(slmoinhat<2){
-                    ViewHolder.bttvalues.setText(String.valueOf(slmoinhat));
-                    ViewHolder.bttminus.setVisibility(View.INVISIBLE);
-                    ViewHolder.bttplus.setVisibility(View.VISIBLE);
-                }else{
-                    ViewHolder.bttvalues.setText(String.valueOf(slmoinhat));
-                    ViewHolder.bttminus.setVisibility(View.VISIBLE);
-                    ViewHolder.bttplus.setVisibility(View.VISIBLE);
+                if (slmoi < 2) {
+                    finalViewHolder.btgiamgiohang.setVisibility(View.INVISIBLE);
+                    finalViewHolder.btthemgiohang.setVisibility(View.VISIBLE);
+                    finalViewHolder.giatrigiohang.setText(String.valueOf(slmoi));
+                } else {
+                    finalViewHolder.btgiamgiohang.setVisibility(View.VISIBLE);
+                    finalViewHolder.btthemgiohang.setVisibility(View.VISIBLE);
+                    finalViewHolder.giatrigiohang.setText(String.valueOf(slmoi));
                 }
             }
         });
-
-
         return convertView;
     }
 }
