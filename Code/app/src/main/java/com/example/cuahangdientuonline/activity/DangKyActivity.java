@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ import com.example.cuahangdientuonline.ultil.Server;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class DangKyActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -32,11 +35,12 @@ public class DangKyActivity extends AppCompatActivity {
     private Button bttdangkytaikhoan;
     private TextView textViewcanhbao;
     private String gtinh="Nam";
-    private String ta="";
     private boolean ok=true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_dang_ky);
         toolbar=(Toolbar)findViewById(R.id.toolbardangky);
         Actiontoolbar();
@@ -47,29 +51,66 @@ public class DangKyActivity extends AppCompatActivity {
         bttdangkytaikhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtho.length()==0 || edtten.length()==0 || edtemail.length()==0 || edtmatkhau.length()==0|| edtsdt.length()==0 ||edtdc.length()==0 ){
+
+                if(edtho.getText().toString().isEmpty() ||
+                        edtten.getText().toString().isEmpty() ||
+                        edtemail.getText().toString().isEmpty()||
+                        edtmatkhau.getText().toString().isEmpty()||
+                        edtsdt.getText().toString().isEmpty() ||
+                        edtdc.getText().toString().isEmpty() ){
                     textViewcanhbao.setText(" Vui lòng điền đầy đủ thông tin!");
 
                 }
-                else if(edtmatkhau.length()<=6 || edtemail.length()<=6){
-                    String t = edtemail.getText().toString();
-                    ta = t.substring(t.length() - 10);
-                    textViewcanhbao.setText("Email hoặc mật khẩu phải từ 6 ký tự trờ lên!");
+                else if(!validatePassword() || !validateSDT() || !validateEmail() ){
+                    textViewcanhbao.setText(null);
+                    return;
 
-                }else if(edtsdt.length()<=9){
-                    textViewcanhbao.setText(" Số điện thoại của bạn không hợp lệ!");
-
-                }
-                else if(ta.equals("@")) {
-                    textViewcanhbao.setText("Email của bạn không hợp lệ!");
                 }else {
                     themtaikhoan();
-                    //  DangNhapActivity.database.QueryData("INSERT INTO TaiKhoan VALUES(NULL,'"+ edtho.getText().toString().trim()+"','"+edtten.getText().toString().trim()+"','"+edtemail.getText().toString().trim()+"','"+edtmatkhau.getText().toString()+"','"+edtsdt.getText().toString().trim()+"','"+gtinh+"',1)");
-                    //  startActivity(new Intent(getApplicationContext(),DangNhapActivity.class));
                 }
 
             }
         });
+    }
+    private boolean validateEmail() {
+        String emailInput = edtemail.getText().toString().trim();
+        if (emailInput.isEmpty()) {
+            edtemail.setError("Email không được bỏ trống!");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            edtemail.setError("Vui lòng nhập email hợp lệ!");
+            return false;
+        } else {
+            edtemail.setError(null);
+            return true;
+        }
+    }
+    private boolean validatePassword() {
+        String pass = edtmatkhau.getText().toString().trim();
+        if (pass.length() == 0) {
+            edtmatkhau.setError("Mật khẩu không được bỏ trống!");
+            return false;
+        } else {
+            if (pass.length() <= 6 ) {
+                edtmatkhau.setError("Mật khẩu phải có ít nhất 6 ký tự!");
+                return false;
+            }
+        }
+
+        return  true;
+    }
+    private boolean validateSDT() {
+        String sdt = edtsdt.getText().toString().trim();
+        if (sdt.length() == 0) {
+            edtsdt.setError("Số điện thoại không được bỏ trống!");
+            return false;
+        } else {
+            if (sdt.length() <= 9) {
+                edtsdt.setError("Số điện thoại không hợp lệ!");
+                return false;
+            }
+        }
+        return  true;
     }
     public void themtaikhoan(){
         final RequestQueue requestQueue=Volley.newRequestQueue(this);
@@ -79,8 +120,7 @@ public class DangKyActivity extends AppCompatActivity {
                 if(response.trim().equals("success")) {
                     Toast.makeText(DangKyActivity.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(DangKyActivity.this, DangNhapActivity.class));
-                }else if(response.trim().equals("Tài Khoản Đã Tồn Tại!")){
-                    Toast.makeText(DangKyActivity.this,"Email đã tồn tại!",Toast.LENGTH_LONG).show();
+                }else if(!response.trim().equals("success")){
                     textViewcanhbao.setText("Email đã tồn tại! Vui lòng chọn email khác!");
                 }
             }
