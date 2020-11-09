@@ -74,6 +74,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     int value=Integer.parseInt(response);
                     id=value;
                     startActivity(new Intent(DangNhapActivity.this, MainActivity.class));
+                    Toast.makeText(DangNhapActivity.this,"Đăng nhập thành công!",Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {

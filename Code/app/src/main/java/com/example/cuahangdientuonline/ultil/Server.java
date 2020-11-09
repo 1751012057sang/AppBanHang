@@ -13,12 +13,17 @@ public class Server {
   public static String duongdandangkitaikhoan=a+"dangkitaikhoan.php";
   public static String kiemtrataikhoan=a+"dangnhap.php";
   public static String duongdangetsanphamdadat=a+"getsanphamdadat.php";
-  public static String laytenkh=a+"gettenkhachhang.php";
+  public static String layhotenkh=a+"gettenkhachhang.php";
+  public static String laytenkh=a+"layten.php";
+  public static String layhokh=a+"layho.php";
   public static String layemail=a+"layemail.php";
   public static String laydiachi=a+"laydiachi.php";
   public static String laysdt=a+"laysdt.php";
   public static String capnhatdiachi=a+"capnhatdiachi.php";
-  public static String laytongtiendh=a+"laytongtiendh.php";
+  public static String capnhatsdt=a+"capnhatsdt.php";
+  public static String capnhatten=a+"capnhatten.php";
+  public static String capnhatho=a+"capnhatho.php";
+
 
 
 }

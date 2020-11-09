@@ -22,13 +22,13 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:focusable="false"
             android:textColor="@color/black"
             android:id="@+id/edittextdialogtenkh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Tên khách hàng"
-            android:textAllCaps="true"/>
+            android:hint="Tên khách hàng" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="10dp"
@@ -36,6 +36,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:focusable="false"
             android:textColor="@color/black"
             android:id="@+id/edittextdialogdiachi"
             android:layout_width="match_parent"
@@ -49,6 +50,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:focusable="false"
             android:textColor="@color/black"
             android:id="@+id/edittextdialogsdt"
             android:layout_width="match_parent"

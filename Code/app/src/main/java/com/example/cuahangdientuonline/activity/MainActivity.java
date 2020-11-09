@@ -12,12 +12,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewFlipper viewFlipper;
     private GridView gridView;
     private LinearLayout taiKhoan;
+    public  static EditText edtdc, edtsdt, edttenkh, edthokh;
     // private RecyclerView recyclerViewmanhinhchinh;
     private NavigationView navigationView;
     private ListView listViewmanhinhchinh;
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
             ActionBar();
             ActionViewFlipper();
-            LayTenKH();
+            LayHoTenKH();
             LaySDTKH();
             GetDuLieuLoaisp();
             //   GetDuLieuSanPhamNew();
@@ -210,11 +213,116 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void capnhatdiachi(){
+        final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.capnhatdiachi, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                param.put("diachi",edtdc.getText().toString().trim());
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private void capnhatsdt(){
+        final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.capnhatsdt, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                param.put("SDT",edtsdt.getText().toString().trim());
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private void capnhatten(){
+        final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.capnhatten, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                param.put("Ten",edttenkh.getText().toString().trim());
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private void capnhatho(){
+        final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.capnhatho, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                param.put("Ho",edthokh.getText().toString().trim());
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
     private void DangXuat() {
         final Dialog d = new Dialog(this);
+        LayTenKH();
+        LayHoKH();
+        LaySDT();
+        LayDC();
         d.setContentView(R.layout.dialog_dangxuat);
+        edttenkh=(EditText)d.findViewById(R.id.edttenkh);
+        edthokh=(EditText)d.findViewById(R.id.edthokh);
+        edtdc=(EditText)d.findViewById(R.id.edtdiachhi);
+        edtsdt=(EditText)d.findViewById(R.id.edtsdtkhachhang);
         Button b1 = (Button) d.findViewById(R.id.buttonhuy);
         Button b2 = (Button) d.findViewById(R.id.buttonxacnhan);
+        Button b3 = (Button) d.findViewById(R.id.buttondangxuat);
         b1.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -222,12 +330,46 @@ public class MainActivity extends AppCompatActivity {
                 d.dismiss();
             }
         });
-        b2.setOnClickListener(new View.OnClickListener() {
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                if(edttenkh.getText().toString().isEmpty()){
+                    edttenkh.setError("Vui lòng nhập tên!");
+                }else {
+                    if (edthokh.getText().toString().isEmpty()) {
+                        edthokh.setError(" Vui lòng nhập họ!");
+                    } else {
+                        if (edtsdt.getText().toString().isEmpty()) {
+                            edtsdt.setError(" Vui lòng nhập SĐT!");
+                        } else {
+                            if (edtdc.getText().toString().isEmpty()) {
+                                edtdc.setError(" Vui lòng nhập dịa chỉ!");
+                            } else {
+                                if (validateSDT()) {
+                                    d.dismiss();
+                                    Toast.makeText(MainActivity.this, "Đổi thông tin thành công!", Toast.LENGTH_LONG).show();
+                                    capnhatten();
+                                    capnhatho();
+                                    capnhatsdt();
+                                    capnhatdiachi();
+                                    LayHoTenKH();
+                                    LaySDTKH();
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+                Toast.makeText(MainActivity.this, "Đăng xuất thành công!", Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(MainActivity.this,DangNhapActivity.class);
-                startActivity(new Intent(getApplicationContext(),DangNhapActivity.class));;
+                startActivity(intent);
             }
         });
         d.show();
@@ -237,6 +379,62 @@ public class MainActivity extends AppCompatActivity {
     private void LayTenKH(){
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.laytenkh, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                edttenkh.setText(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private void LayHoKH(){
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.layhokh, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                edthokh.setText(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private boolean validateSDT() {
+        String sdt = edtsdt.getText().toString().trim();
+                if (sdt.length() <= 9) {
+                    edtsdt.setError("Số điện thoại không hợp lệ!");
+                    return false;
+                }
+        return  true;
+    }
+    private void LayHoTenKH(){
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.layhotenkh, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 tv_Tentk.setText(response);
@@ -282,7 +480,54 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+    private void LaySDT(){
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.laysdt, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                edtsdt.setText(response);
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+    private void LayDC(){
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.laydiachi, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                edtdc.setText(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param=new HashMap<String, String>();
+                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
+                return param;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
 
 
     private void GetDuLieuLoaisp() {
@@ -370,6 +615,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private void Anhxa(){
         taiKhoan = findViewById(R.id.taikhoan);

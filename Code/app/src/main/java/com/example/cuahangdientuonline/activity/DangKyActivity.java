@@ -63,8 +63,6 @@ public class DangKyActivity extends AppCompatActivity {
                 }
                 else if(!validatePassword() || !validateSDT() || !validateEmail() ){
                     textViewcanhbao.setText(null);
-                    return;
-
                 }else {
                     themtaikhoan();
                 }
@@ -105,9 +103,14 @@ public class DangKyActivity extends AppCompatActivity {
             edtsdt.setError("Số điện thoại không được bỏ trống!");
             return false;
         } else {
-            if (sdt.length() <= 9) {
-                edtsdt.setError("Số điện thoại không hợp lệ!");
+            if (sdt.contains(" ")) {
+                edtsdt.setError("SĐT không thêm khoảng trắng!!!");
                 return false;
+            } else {
+                if (sdt.length() <= 9) {
+                    edtsdt.setError("Số điện thoại không hợp lệ!");
+                    return false;
+                }
             }
         }
         return  true;

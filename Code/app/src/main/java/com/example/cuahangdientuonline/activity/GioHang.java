@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,7 +74,7 @@ public class GioHang extends AppCompatActivity {
         builder.setMessage("Bạn Có chắc Muốn Đặt Giỏ Hàng Này ");
         builder.setPositiveButton("có", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(final DialogInterface dialog, int which) {
                     final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
                     StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.duongdandonhang, new Response.Listener<String>() {
                         @Override
@@ -91,7 +93,7 @@ public class GioHang extends AppCompatActivity {
                                             CheckConnection.ShowToast_short(getApplicationContext(),"Mời bạn tiếp tục mua sản phẩm");
                                         }else{
                                             CheckConnection.ShowToast_short(getApplicationContext(),"Bạn chưa thêm sản phẩm vào giỏ hàng!");
-                                            finish();
+                                            dialog.dismiss();
                                         }
                                     }
                                 }, new Response.ErrorListener() {
@@ -158,6 +160,7 @@ public class GioHang extends AppCompatActivity {
         btntieptucmua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(GioHang.this, "Mời bạn tiếp tục mua hàng!", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
@@ -249,7 +252,6 @@ public class GioHang extends AppCompatActivity {
         bttxacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                capnhatdiachi();
                 EventThanhToan();
             }
         });
@@ -312,7 +314,7 @@ public class GioHang extends AppCompatActivity {
     }
     private void laytenkh(){
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.laytenkh, new Response.Listener<String>() {
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.layhotenkh, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 edtenkh.setText(response);
@@ -332,32 +334,6 @@ public class GioHang extends AppCompatActivity {
             }
         };
         requestQueue.add(stringRequest);
-
-    }
-    private void capnhatdiachi(){
-        final RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Server.capnhatdiachi, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param=new HashMap<String, String>();
-                param.put("MaTaiKhoan", String.valueOf(DangNhapActivity.id));
-                param.put("diachi",edtdc.getText().toString().trim());
-                return param;
-            }
-        };
-        requestQueue.add(stringRequest);
-
-
 
     }
 

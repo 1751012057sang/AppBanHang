@@ -55,6 +55,7 @@
                         android:layout_height="wrap_content">
 
                         <EditText
+                            android:inputType="textCapWords"
                             android:id="@+id/edt_ten"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
@@ -72,6 +73,7 @@
                         android:layout_height="wrap_content">
 
                         <EditText
+                            android:inputType="textCapWords"
                             android:id="@+id/edt_ho"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -123,6 +125,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:inputType="textCapWords"
                         android:id="@+id/edt_diachi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -135,9 +138,12 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etPasswordLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true">
                 <EditText
+                    android:drawableStart="@drawable/lock"
                     android:id="@+id/edt_matkhau"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
