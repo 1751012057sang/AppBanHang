@@ -1,9 +1,6 @@
 package com.example.cuahangdientuonline.activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -11,10 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -333,85 +328,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 d.dismiss();
-                LayHoTenKH();
-                LaySDTKH();
             }
         });
         b2.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Xác nhận thay đổi thông tin");
-                builder.setMessage("Bạn có chắc muốn thay đổi thông tin! ");
-                builder.setPositiveButton("có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(edttenkh.getText().toString().isEmpty()){
-                            edttenkh.setError("Vui lòng nhập tên!");
-                        }else {
-                            if (edthokh.getText().toString().isEmpty()) {
-                                edthokh.setError(" Vui lòng nhập họ!");
+                if(edttenkh.getText().toString().isEmpty()){
+                    edttenkh.setError("Vui lòng nhập tên!");
+                }else {
+                    if (edthokh.getText().toString().isEmpty()) {
+                        edthokh.setError(" Vui lòng nhập họ!");
+                    } else {
+                        if (edtsdt.getText().toString().isEmpty()) {
+                            edtsdt.setError(" Vui lòng nhập SĐT!");
+                        } else {
+                            if (edtdc.getText().toString().isEmpty()) {
+                                edtdc.setError(" Vui lòng nhập dịa chỉ!");
                             } else {
-                                if (edtsdt.getText().toString().isEmpty()) {
-                                    edtsdt.setError(" Vui lòng nhập SĐT!");
-                                } else {
-                                    if (edtdc.getText().toString().isEmpty()) {
-                                        edtdc.setError(" Vui lòng nhập dịa chỉ!");
-                                    } else {
-                                        if (validateSDT()) {
-                                            capnhatten();
-                                            capnhatho();
-                                            capnhatsdt();
-                                            capnhatdiachi();
-                                            Toast.makeText(MainActivity.this, "Đổi thông tin thành công!", Toast.LENGTH_LONG).show();
-                                        }
-                                    }
+                                if (validateSDT()) {
+                                    d.dismiss();
+                                    Toast.makeText(MainActivity.this, "Đổi thông tin thành công!", Toast.LENGTH_LONG).show();
+                                    capnhatten();
+                                    capnhatho();
+                                    capnhatsdt();
+                                    capnhatdiachi();
+                                    LayHoTenKH();
+                                    LaySDTKH();
                                 }
                             }
                         }
-
                     }
-                });
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                builder.setNegativeButton("Không ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.show();
+                }
 
             }
         });
-
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Xác nhận đăng xuất");
-                builder.setMessage("Bạn có chắc muốn đăng xuất! ");
-                builder.setPositiveButton("có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        MainActivity.this.finish();
-                        System.exit(0);
-                        Intent intent=new Intent(MainActivity.this,DangNhapActivity.class);
-                        startActivity(intent);
-                    }
-                });
-                builder.setNegativeButton("Không ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.show();
-
+                finish();
+                Toast.makeText(MainActivity.this, "Đăng xuất thành công!", Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(MainActivity.this,DangNhapActivity.class);
+                startActivity(intent);
             }
         });
         d.show();
+
     }
 
     private void LayTenKH(){
@@ -420,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 edttenkh.setText(response);
-                
+
             }
         }, new Response.ErrorListener() {
             @Override
