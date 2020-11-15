@@ -88,9 +88,9 @@ public class GioHang extends AppCompatActivity {
                                         Log.d("machitiec",response);
                                         if(response.equals("success")){
                                             MainActivity.manggiohang.clear();
-                                            CheckConnection.ShowToast_short(getApplicationContext(),"Bạn đã thêm giỏ hàng thành công");
+                                            CheckConnection.ShowToast_short(getApplicationContext(),"Bạn đã đặt hàng thành công!");
                                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                            CheckConnection.ShowToast_short(getApplicationContext(),"Mời bạn tiếp tục mua sản phẩm");
+                                            CheckConnection.ShowToast_short(getApplicationContext(),"Mời bạn tiếp tục mua sản phẩm!");
                                         }else{
                                             CheckConnection.ShowToast_short(getApplicationContext(),"Bạn chưa thêm sản phẩm vào giỏ hàng!");
                                             dialog.dismiss();
@@ -149,7 +149,7 @@ public class GioHang extends AppCompatActivity {
         builder.setNegativeButton("Không ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-              startActivity(new Intent(getApplicationContext(),GioHang.class));
+              dialog.dismiss();
             }
         });
         builder.show();

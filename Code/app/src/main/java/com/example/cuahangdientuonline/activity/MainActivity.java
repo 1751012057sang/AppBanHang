@@ -1,5 +1,6 @@
 package com.example.cuahangdientuonline.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -395,10 +396,11 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        MainActivity.this.finish();
-                        System.exit(0);
+
                         Intent intent=new Intent(MainActivity.this,DangNhapActivity.class);
                         startActivity(intent);
+                        Toast.makeText(MainActivity.this, "Bạn đã đăng xuất!", Toast.LENGTH_LONG).show();
+                        MainActivity.this.finish();
                     }
                 });
                 builder.setNegativeButton("Không ", new DialogInterface.OnClickListener() {
